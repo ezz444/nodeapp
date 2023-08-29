@@ -35,11 +35,6 @@ pipeline {
             }
         }
         stage('Run sonarqube') {
-            agent {
-                tools {
-                    maven 'MavenInstallationName' // Specify the actual Maven installation name
-                }
-            }
             steps {
                 container('sonarqube') {
                     sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
