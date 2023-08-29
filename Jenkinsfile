@@ -2,11 +2,11 @@ pipeline {
 	agent any
       environment {
         HOME = '.'
-        npm_config_cache = 'npm-cache'
-        DOCKERHUB_CREDENTIALS = credentials('omarelzahar-dockerhub')
-        registry = "omarelzahar/gold"
-        registryCredential = 'omarelzahar-dockerhub'
-        dockerImage = ''
+        // npm_config_cache = 'npm-cache'
+        // DOCKERHUB_CREDENTIALS = credentials('omarelzahar-dockerhub')
+        // registry = "omarelzahar/gold"
+        // registryCredential = 'omarelzahar-dockerhub'
+        // dockerImage = ''
     }
     stages {	
         stage("install dependencies") {	
