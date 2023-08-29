@@ -29,7 +29,7 @@ pipeline {
 podTemplate(containers: [
     containerTemplate(
         name: 'nodejs', 
-        image: 'node:14', 
+        image: 'node:18', 
         command: 'sleep', 
         args: '30d'
     )
