@@ -1,7 +1,7 @@
 podTemplate(containers: [
     containerTemplate(name: 'maven', image: 'maven:3.8.1-jdk-8', command: 'sleep', args: '99d'),
     containerTemplate(name: 'node', image: 'node', command: 'sleep', args: '99d'),
-   containerTemplate(name: 'sonaqube', image: 'sonaqube', command: 'sleep', args: '99d')
+   containerTemplate(name: 'sonaqube', image: 'sonarqube', command: 'sleep', args: '99d')
 
   ]) {
 
