@@ -20,7 +20,7 @@ pipeline {
                 container('node') {
                     sh 'npm install'
                     sh 'npm run test:unit'
-                    sh 'npm build'
+                    sh 'npm run build'
                 }
             }
         }
