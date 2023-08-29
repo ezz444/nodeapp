@@ -2,16 +2,6 @@ pipeline {
     agent {
         kubernetes {
             yaml '''
-                // apiVersion: v1
-                // kind: Pod
-                // spec:
-                //   containers:
-                //   - name: sonarqube
-                //     image: sonarqube
-                //     command:
-                //     - cat
-                //     tty: true
-                // ---
                 apiVersion: v1
                 kind: Pod
                 spec:
