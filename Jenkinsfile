@@ -6,14 +6,12 @@ pipeline {
                 kind: Pod
                 spec:
                   containers:
-                  - name: node
-                    image: node:alpine
+                  - name: docker
+                    image: docker
                     command:
                     - cat
                     tty: true
-                  - name: docker
-                    image: docker
-                    tty: true
+
             '''
         }
     }
