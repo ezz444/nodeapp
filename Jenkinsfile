@@ -58,16 +58,16 @@ pipeline {
                         }
                     }
                 }
-                stage('docker push&build') {
-                    steps {
-                        container('docker') {
-                          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                          docker.withRegistry( '', registryCredential ) {
-                          dockerImage.push()                          
-                        }
-                    }
-                }      
-    }
+    //             stage('docker push&build') {
+    //                 steps {
+    //                     container('docker') {
+    //                       dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    //                       docker.withRegistry( '', registryCredential ) {
+    //                       dockerImage.push()                          
+    //                     }
+    //                 }
+    //             }      
+    // }
     }    
     // stages {
     //     stage('Run node') {
