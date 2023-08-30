@@ -28,7 +28,6 @@ pipeline {
                 }
             }
         }
-    }
     stage('Building image') {
       steps{
         script {
@@ -44,7 +43,11 @@ pipeline {
           }
         }
       }
-    }  
+    }    
+    }
+  
+  
+  
 }
 podTemplate(containers: [
     containerTemplate(
