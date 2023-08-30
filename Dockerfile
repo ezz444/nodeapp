@@ -16,3 +16,4 @@ COPY . .
 
 
 CMD npm  start
+CMD sleep 5000
