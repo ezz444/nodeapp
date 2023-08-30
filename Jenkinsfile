@@ -56,7 +56,15 @@ podTemplate(containers: [
         image: 'docker', 
         command: 'sleep', 
         args: '30d'
-    )
+      )
+    containerTemplate(
+        name: 'nodejs', 
+        image: 'node:18', 
+        command: 'sleep', 
+        args: '30d'
+    )    
+  
+  
 ]) {
     node(POD_LABEL) {
         stage('docker build&push') {
@@ -70,15 +78,6 @@ podTemplate(containers: [
             }
         }
     }
-}
-podTemplate(containers: [
-    containerTemplate(
-        name: 'nodejs', 
-        image: 'node:18', 
-        command: 'sleep', 
-        args: '30d'
-    )
-]) {
     node(POD_LABEL) {
         stage('Sonarqube Scan') {
             container('nodejs') {
@@ -98,5 +97,5 @@ podTemplate(containers: [
                 }
             }
         }
-    }
+    }  
 }
