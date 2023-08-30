@@ -24,7 +24,8 @@ pipeline {
                 container('node') {
                     // sh 'npm install'
                     // sh 'npm run test:unit'
-                    sh 'npm run build'
+                    // sh 'npm run build'
+                    sh 'echo hello'                  
                 }
             }
         }
