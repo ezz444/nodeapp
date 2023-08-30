@@ -25,16 +25,17 @@ pipeline {
                 }
             }
         }
-	        stage('build and push image') {	
-            steps {	
-                container('node') {	
-                    git 'https://github.com/ezz444/nodeapp.git'	
-                    def newApp = docker.build("ezzops/bm-project:${env.BUILD_TAG}")	
-                    docker.withRegistry('https://hub.docker.com', 'ezzops-dockerhub') {	
-                        newApp.push()	
-                    }	
-                }	
-            }	
+        stage('Build and Push Docker Image') {
+            steps {
+                container('node') {
+                    script {
+                        def newApp = docker.build("ezzops/bm-project:${env.BUILD_TAG}")
+                        docker.withRegistry('https://hub.docker.com', 'ezzops-dockerhub') {
+                            newApp.push()
+                        }
+                    }
+                }
+            }
         }
 }
 podTemplate(containers: [
