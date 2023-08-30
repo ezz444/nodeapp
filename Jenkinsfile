@@ -28,26 +28,47 @@ pipeline {
                 }
             }
         }
-    stage('Building image') {
-      steps{
+    // stage('Building image') {
+    //   steps{
+    //     script {
+    //       dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    //     }
+    //   }
+    // }
+    // stage('Deploy Image') {
+    //   steps{
+    //     script {
+    //       docker.withRegistry( '', registryCredential ) {
+    //         dockerImage.push()
+    //       }
+    //     }
+    //   }
+    // }    
+    }
+  
+  
+  
+}
+podTemplate(containers: [
+    containerTemplate(
+        name: 'docker', 
+        image: 'docker', 
+        command: 'sleep', 
+        args: '30d'
+    )
+]) {
+    node(POD_LABEL) {
+        stage('docker build&push') {
+            container('docker') {
+                stage('docker build') {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }                  
+
+                }
+            }
         }
-      }
     }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }    
-    }
-  
-  
-  
 }
 podTemplate(containers: [
     containerTemplate(
