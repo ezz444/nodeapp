@@ -37,6 +37,7 @@ pipeline {
       stage('docker build'){
         steps{
           container('docker'){
+            git 'https://github.com/ezz444/nodeapp.git'
             sh 'docker build -t ezzops/test:$BUILD_NUMBER .'
             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             sh 'docker push ezzops/test:$BUILD_NUMBER'
