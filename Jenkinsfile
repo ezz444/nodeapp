@@ -37,7 +37,7 @@ pipeline {
       stage('docker build'){
         steps{
           container('docker'){
-            sh 'docker build -t test:latest .'
+            sh 'docker build -t ezzops/test:latest .'
             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             sh 'docker push ezzops/test:latest'
             
