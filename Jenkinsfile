@@ -37,9 +37,9 @@ pipeline {
       stage('docker build'){
         steps{
           container('docker'){
-            sh 'docker build -t test:$BUILD_NUMBER .'
+            sh 'docker build -t test:latest .'
             sh 'echo DOCKERHUB_CREDENTIALS_PSW | docker login -u SDOCKERHUB_CREDENTIALS_USR --password-stdin'
-            sh 'sh 'docker push test:$BUILD_NUMBER'
+            sh 'sh 'docker push test:latest'
             
           }
         }
