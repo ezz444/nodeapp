@@ -11,7 +11,6 @@ pipeline {
                     command:
                     - cat
                     tty: true
-                  container:
                   - name: docker
                     image: docker
                     tty: true
