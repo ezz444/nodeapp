@@ -15,5 +15,4 @@ RUN npm install
 COPY . .
 
 
-CMD npm  start
-CMD sleep 5000
+CMD npx turbo serve
