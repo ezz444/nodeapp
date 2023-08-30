@@ -1,4 +1,7 @@
 pipeline {
+  enviroment {
+    DOCKERHUB_CREDENTIALS = credentials("ezzops-dockerhub')
+  }
     agent {
         kubernetes {
             yaml '''
@@ -18,12 +21,24 @@ pipeline {
         stage('Run node') {
             steps {
                 container('node') {
-                    sh 'npm install'
+                    // sh 'npm install'
                     sh 'npm run test:unit'
-                    sh 'npm run build'
+                    // sh 'npm run build'
+                  
                 }
             }
         }
+        stage('Run node') {
+            steps {
+                container('node') {
+                    git 'https://github.com/ezz444/nodeapp.git' 
+                    def newApp = docker.build "ezzops/bm-project:${env.BUILD_TAG}"
+                docker.withRegistry('https://hub.docker.com/repositories/ezzops', 'ezzops-dockerhub') {
+                    newApp.push()  
+                  
+                }
+            }
+        }      
     }
 }
 podTemplate(containers: [
