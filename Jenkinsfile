@@ -68,7 +68,7 @@ podTemplate(containers: [
                         sonar-scanner \
                             -Dsonar.projectKey=api.identity.ciba \
                             -Dsonar.host.url=http://3.82.121.111:9000 \
-                            -Dsonar.login=sqp_8da16ea24b2268e8e64d25cb3569c4a3dd2ed17f
+                            -Dsonar.login=sqp_e05fac7df977b94dacbe2ced62d23ae72b425708
                         '''
                     }
                 }
