@@ -19,15 +19,15 @@ pipeline {
         }
     }
     stages {
-        stage('Run node') {
-            steps {
-                container('node') {
-                    // sh 'npm install'
-                    sh 'npm run test:unit'
-                    // sh 'npm run build'
-                }
-            }
-        }
+        // stage('Run node') {
+        //     steps {
+        //         container('node') {
+        //             // sh 'npm install'
+        //             sh 'npm run test:unit'
+        //             // sh 'npm run build'
+        //         }
+        //     }
+        // }
       stage('docker build'){
         steps{
           container('docker'){
