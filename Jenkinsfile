@@ -1,4 +1,7 @@
 pipeline {
+  environment (
+        DOCKERHUB_CREDENTIALS credentials("ezzops-dockerhub")
+    )
     agent {
         kubernetes {
             yaml '''
@@ -34,7 +37,9 @@ pipeline {
       stage('docker build'){
         steps{
           container('docker'){
-            sh 'docker build -t test .'
+            sh 'docker build -t test:$BUILD_NUMBER .'
+            sh 'echo DOCKERHUB_CREDENTIALS_PSW | docker login -u SDOCKERHUB_CREDENTIALS_USR --password-stdin'
+            sh 'sh 'docker push test:$BUILD_NUMBER'
             
           }
         }
