@@ -37,9 +37,9 @@ pipeline {
       stage('docker build'){
         steps{
           container('docker'){
-            sh 'docker build -t ezzops/test:latest .'
+            sh 'docker build -t ezzops/test:$BUILD_NUMBER .'
             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            sh 'docker push ezzops/test:latest'
+            sh 'docker push ezzops/test:$BUILD_NUMBER'
             
           }
         }
