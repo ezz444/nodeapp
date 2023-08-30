@@ -1,6 +1,6 @@
 pipeline {
   environment (
-        DOCKERHUB_CREDENTIALS credentials("ezzops-dockerhub")
+        DOCKERHUB_CREDENTIALS credentials('ezzops-dockerhub')
     )
     agent {
         kubernetes {
